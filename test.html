@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Video Background Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="relative w-full h-screen overflow-hidden">
+      <video
+        class="absolute top-0 left-0 w-full h-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+      >
+        <source
+          src="https://cdn.pixabay.com/video/2023/08/07/175058-859444746_large.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+
+      <div class="relative z-10 flex flex-col items-center justify-center h-full text-white bg-black/50 text-center">
+        <h1 class="text-5xl font-bold">It Works!</h1>
+        <p class="mt-4 text-xl">This video is looping in the background</p>
+      </div>
+    </div>
+  </body>
+</html>
