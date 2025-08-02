@@ -1,149 +1,164 @@
-import React, { useState } from 'react';
-import { ChevronDownIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import {
+  ChevronDownIcon,
+  Bars3Icon,
+  XMarkIcon,
+} from "@heroicons/react/24/solid";
 
-const NavBar = () => {
+const NavBar = ({
+  onHomeClick,
+  onServicesClick,
+  onAboutClick,
+  onContactClick,
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  // Check if the user has scrolled down
+  // This will change the navbar background color and shadow
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <div className="bg-white shadow-md w-full">
-      <div className="h-20 flex items-center justify-between px-5 sm:px-10">
+    <div
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+      }`}
+    >
+      <div className="max-w-7xl mx-auto h-20 flex items-center justify-between px-5 sm:px-10">
         {/* Logo */}
-        <Link to="/">
+        <div onClick={onHomeClick} className="cursor-pointer">
           <img
             src="https://www.devlayers.org/static/media/Group%2015%20(2).0c02355fab0ef3a5ec00.png"
             alt="Logo"
             className="h-10 w-40"
           />
-        </Link>
+        </div>
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex gap-10 items-center">
-          <Link
-            to="/"
-            className="text-xl font-medium italic text-black hover:text-[#0b4ea1]"
+          <div
+            className="text-xl font-medium italic text-black hover:text-[#0b4ea1] cursor-pointer"
+            onClick={onHomeClick}
           >
             Home
-          </Link>
-          <Link
-            to="/services"
-            className="text-xl font-medium italic text-black hover:text-[#0b4ea1]"
+          </div>
+
+          <div
+            className="text-xl font-medium italic text-black hover:text-[#0b4ea1] cursor-pointer"
+            onClick={onServicesClick}
           >
             Services
-          </Link>
-
-          {/* Dropdown */}
+          </div>
           <div className="relative group">
-            <div className="flex items-center gap-1 text-xl font-medium italic text-black hover:text-[#0b4ea1] cursor-pointer">
+            <div
+              onClick={onAboutClick}
+              className="flex items-center gap-1 text-xl font-medium italic text-black hover:text-[#0b4ea1] cursor-pointer"
+            >
               About Us
               <ChevronDownIcon className="w-5 h-5 text-black group-hover:text-[#0b4ea1]" />
             </div>
 
             {/* Dropdown Content */}
             <div className="absolute mt-2 w-44 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-20">
-              <Link
-                to="/our-story"
-                className="block px-4 py-2 text-black hover:bg-blue-100 hover:text-[#0b4ea1] rounded-md italic"
-              >
+              <div className="block px-4 py-2 text-black hover:bg-blue-100 hover:text-[#0b4ea1] rounded-md italic">
                 Our Story
-              </Link>
-              <Link
+              </div>
+              <div
                 to="/team"
                 className="block px-4 py-2 text-black hover:bg-blue-100 hover:text-[#0b4ea1] rounded-md italic"
               >
                 Team
-              </Link>
-              <Link
+              </div>
+              <div
                 to="/values"
                 className="block px-4 py-2 text-black hover:bg-blue-100 hover:text-[#0b4ea1] rounded-md italic"
               >
                 Values
-              </Link>
+              </div>
             </div>
           </div>
 
-          <Link
-            to="/contact"
-            className="text-xl font-medium italic text-black hover:text-[#0b4ea1]"
+          <div
+            className="text-xl font-medium italic text-black hover:text-[#0b4ea1] cursor-pointer"
+            onClick={onContactClick}
           >
             Contact
-          </Link>
+          </div>
         </div>
 
         {/* Button (desktop only) */}
-        <Link
-          to="/contact"
-          className="hidden lg:inline bg-[#0b4ea1] text-white font-bold px-7 py-2 rounded-full hover:bg-blue-900 shadow-md"
+
+        <div
+          className={`hidden lg:inline-block bg-[#0b4ea1] text-white font-bold px-7 py-2 rounded-full shadow-md transition duration-300 hover:bg-blue-900
+    ${
+      isScrolled
+        ? "opacity-100 visible pointer-events-auto"
+        : "opacity-0 invisible pointer-events-none"
+    }
+  `}
+          onClick={onContactClick}
         >
           Let's Talk
-        </Link>
+        </div>
 
-        {/* Hamburger Menu (mobile only) */}
+        {/* Hamburger Menu Button */}
         <button
           className="lg:hidden text-black"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? <XMarkIcon className="w-7 h-7" /> : <Bars3Icon className="w-7 h-7" />}
+          {isMenuOpen ? (
+            <XMarkIcon className="w-7 h-7" />
+          ) : (
+            <Bars3Icon className="w-7 h-7" />
+          )}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="lg:hidden px-5 pb-6 space-y-4 bg-white shadow-md">
-          <Link
-            to="/"
+          <div
             className="block text-lg font-medium text-black hover:text-[#0b4ea1]"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              onHomeClick();
+            }}
           >
             Home
-          </Link>
-          <Link
-            to="/services"
+          </div>
+          <div
             className="block text-lg font-medium text-black hover:text-[#0b4ea1]"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              onServicesClick();
+            }}
           >
             Services
-          </Link>
-          <div className=" pt-2">
-            <p className="text-lg font-medium text-black">About Us</p>
-            <div className="ml-4 space-y-2 mt-2">
-              <Link
-                to="/our-story"
-                className="block text-sm text-black hover:text-[#0b4ea1]"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Our Story
-              </Link>
-              <Link
-                to="/team"
-                className="block text-sm text-black hover:text-[#0b4ea1]"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Team
-              </Link>
-              <Link
-                to="/values"
-                className="block text-sm text-black hover:text-[#0b4ea1]"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Values
-              </Link>
-            </div>
           </div>
-          <Link
-            to="/contact"
+          <div
             className="block text-lg font-medium text-black hover:text-[#0b4ea1]"
-            onClick={() => setIsMenuOpen(false)}
+            onClick={() => {
+              setIsMenuOpen(false);
+              onAboutClick();
+            }}
+          >
+            About Us
+          </div>
+          <div
+            className="block text-lg font-medium text-black hover:text-[#0b4ea1]"
+            onClick={() => {
+              setIsMenuOpen(false);
+              onContactClick();
+            }}
           >
             Contact
-          </Link>
-          <Link
-            to="/contact"
-            className="block w-full bg-[#0b4ea1] text-white text-center font-bold px-4 py-2 rounded-full hover:bg-blue-900 transition"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Let's Talk
-          </Link>
+          </div>
         </div>
       )}
     </div>

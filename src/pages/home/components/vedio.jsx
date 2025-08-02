@@ -38,11 +38,17 @@ const HomeVideo = () => {
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-white text-center bg-black/50 px-4">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
           Empowering Your <br />
-          Business with <br />
-          <span className="text-[#0b4ea1]">Custom Software</span> Solutions
+          Business with{" "}
+          <span className="text-[#0b4ea1]">
+            Custom
+            <br />
+            Software
+          </span>{" "}
+          Solutions
         </h2>
         <p className="mt-4 text-sm sm:text-lg md:text-xl lg:text-2xl max-w-3xl">
-          We build modern web, mobile, and cloud apps that scale with your vision.
+          We build modern web, mobile, and cloud apps that scale with your
+          vision.
         </p>
       </div>
     </div>
