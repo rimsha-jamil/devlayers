@@ -43,7 +43,7 @@ const ContactCard = () => {
       </div>
 
       {/* Button */}
-      <button className="w-full bg-[#1d4ed8] text-white py-3 rounded-md hover:bg-blue-700 transition-colors duration-300">
+      <button className="w-full bg-[#1d4ed8] text-white py-3 rounded-md hover:bg-blue-700 transition-colors duration-300 cursor-pointer">
         Send message
       </button>
     </div>

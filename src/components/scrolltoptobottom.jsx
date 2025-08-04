@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { FaArrowUp } from "react-icons/fa";
+import { IoIosArrowUp } from "react-icons/io";
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -21,9 +21,9 @@ const ScrollToTopButton = () => {
     isVisible && (
       <button
         onClick={scrollToTop}
-        className="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full z-50 shadow-lg hover:bg-blue-700 transition"
+        className="fixed bottom-6 right-6 bg-white text-blue-700 p-3 rounded-full z-50 shadow-lg hover:bg-blue-700 hover:text-white transition cursor-pointer"
       >
-        <FaArrowUp size={20} />
+        <IoIosArrowUp  size={20} />
       </button>
     )
   );

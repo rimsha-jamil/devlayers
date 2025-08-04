@@ -32,7 +32,7 @@ const NavBar = ({
     >
       <div className="max-w-7xl mx-auto h-20 flex items-center justify-between px-5 sm:px-10">
         {/* Logo */}
-        <div onClick={onHomeClick} className="cursor-pointer">
+        <div >
           <img
             src="https://www.devlayers.org/static/media/Group%2015%20(2).0c02355fab0ef3a5ec00.png"
             alt="Logo"
@@ -66,18 +66,18 @@ const NavBar = ({
 
             {/* Dropdown Content */}
             <div className="absolute mt-2 w-44 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-20">
-              <div className="block px-4 py-2 text-black hover:bg-blue-100 hover:text-[#0b4ea1] rounded-md italic">
+              <div className="block px-4 py-2 text-black hover:bg-blue-100 hover:text-[#0b4ea1] rounded-md italic cursor-pointer">
                 Our Story
               </div>
               <div
                 to="/team"
-                className="block px-4 py-2 text-black hover:bg-blue-100 hover:text-[#0b4ea1] rounded-md italic"
+                className="block px-4 py-2 text-black hover:bg-blue-100 hover:text-[#0b4ea1] rounded-md italic cursor-pointer"
               >
                 Team
               </div>
               <div
                 to="/values"
-                className="block px-4 py-2 text-black hover:bg-blue-100 hover:text-[#0b4ea1] rounded-md italic"
+                className="block px-4 py-2 text-black hover:bg-blue-100 hover:text-[#0b4ea1] rounded-md italic cursor-pointer"
               >
                 Values
               </div>
@@ -95,7 +95,7 @@ const NavBar = ({
         {/* Button (desktop only) */}
 
         <div
-          className={`hidden lg:inline-block bg-[#0b4ea1] text-white font-bold px-7 py-2 rounded-full shadow-md transition duration-300 hover:bg-blue-900
+          className={`hidden lg:inline-block bg-[#0b4ea1] text-white font-bold px-7 py-2 rounded-full shadow-md transition duration-300 hover:bg-blue-900 cursor-pointer
     ${
       isScrolled
         ? "opacity-100 visible pointer-events-auto"

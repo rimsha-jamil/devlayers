@@ -30,7 +30,7 @@ const Footer = () => {
             <div className="bg-gray-700 p-2 rounded-full hover:bg-blue-500 transition cursor-pointer">
               <FaLinkedinIn />
             </div>
-            <div className="bg-gray-700 p-2 rounded-full hover:bg-pink-500 transition">
+            <div className="bg-gray-700 p-2 rounded-full hover:bg-pink-500 transition cursor-pointer">
               <FaInstagram />
             </div>
           </div>

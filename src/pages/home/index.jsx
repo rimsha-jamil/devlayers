@@ -33,17 +33,18 @@ const Home = () => {
         <HomeVedioPage />
       </div>
 
-      <div ref={servicesRef}>
-        <ServicesGrid />
-      </div>
+     
 
       <div ref={aboutRef}>
         <TechStackGrid />
-        <WorkGrid />
+      
+      </div>
+       <div ref={servicesRef}>
+        <ServicesGrid />
+      </div>
+  <WorkGrid />
         <ProjectGrid />
         <ChoseGrid />
-      </div>
-
       <div ref={contactRef}>
         <ContactPage />
       </div>
